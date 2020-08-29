@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "96574071234",
+    "firebase_url": "https://biteassistant-aa50a.firebaseio.com",
+    "project_id": "biteassistant-aa50a",
+    "storage_bucket": "biteassistant-aa50a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96574071234:android:a2e218302d60d6de3c365b",
+        "android_client_info": {
+          "package_name": "com.example.biteassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96574071234-aa4s8tcgjeqan96if88mc0antgr6mr2q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.biteassistant",
+            "certificate_hash": "3ae5ec420bb6418fdb94c541ae4f192c35c40b71"
+          }
+        },
+        {
+          "client_id": "96574071234-ci0co1fnk9al98dgusk4hinvtgoohjk9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZSfP7FagMfcpYMbBiIDIpF6Req8BHN6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96574071234-ci0co1fnk9al98dgusk4hinvtgoohjk9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
