@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                        arrayList.add(ing);
                     }
 
-                    if (arrayList.contains(item1) || arrayList.contains(item2) || arrayList.contains(item3)) {
+                    if (arrayList.contains(item1) || arrayList.contains(item2) && arrayList.contains(item3)) {
                         for(int k = 0 ; k < dataSnapshot1.child("ingredient").getChildrenCount(); k++) {
                             ingredients = ingredients  + dataSnapshot1.child("ingredient").child(String.valueOf(k)).getValue(String.class)+ ", ";
                         }
