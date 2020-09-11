@@ -29,16 +29,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().hide();
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView = (RecyclerView)findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-
         DatabaseReference databaseReference = (DatabaseReference) FirebaseDatabase.getInstance().getReference("recipes");
-
-
-
 
         modellist = new ArrayList<recipeModel>();
 
@@ -50,25 +48,26 @@ public class MainActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                    // String k=dataSnapshot1.getKey();
                     String itemname="Recipes : ";
-                    String ingredients = "Ingredients : ";
-                    String steps = "Steps : ";
+                    String ingredients = "";
+                    String steps = "";
+
+                    ArrayList arrayList = new ArrayList();
 
                     for(int i = 0 ; i < dataSnapshot1.child("ingredient").getChildrenCount(); i++) {
-                        String ing=dataSnapshot1.child("ingredient").child(String.valueOf(i)).getValue(String.class);
-                        if (ing.equals("Banana") || ing.equals("Ghee") || ing.equals("sugar")) {
-                            for(int k = 0 ; k < dataSnapshot1.child("ingredient").getChildrenCount(); k++) {
+                       String ing = dataSnapshot1.child("ingredient").child(String.valueOf(i)).getValue(String.class);
+                       arrayList.add(ing);
+                    }
 
-                                ingredients = ingredients + " " + dataSnapshot1.child("ingredient").child(String.valueOf(k)).getValue(String.class);
-                            }
-                            itemname = dataSnapshot1.child("r_name").getValue(String.class);
-                            for(int j = 0 ; j < dataSnapshot1.child("procedure").getChildrenCount(); j++){
-                                steps = steps + " " + dataSnapshot1.child("procedure").child(String.valueOf(j)).getValue(String.class);
-                            }
-                            recipeModel modl = new recipeModel(itemname,ingredients,steps);
-                            modellist.add(modl);
-
-
+                    if (arrayList.contains("Banana") || arrayList.contains("Ghee") || arrayList.contains("Sugar")) {
+                        for(int k = 0 ; k < dataSnapshot1.child("ingredient").getChildrenCount(); k++) {
+                            ingredients = ingredients  + dataSnapshot1.child("ingredient").child(String.valueOf(k)).getValue(String.class)+ ", ";
                         }
+                        itemname = dataSnapshot1.child("r_name").getValue(String.class);
+                        for(int j = 0 ; j < dataSnapshot1.child("procedure").getChildrenCount(); j++){
+                            steps = steps + dataSnapshot1.child("procedure").child(String.valueOf(j)).getValue(String.class)+ "\n";
+                        }
+                        recipeModel modl = new recipeModel(itemname,ingredients,steps);
+                        modellist.add(modl);
                     }
 
 //                    for(int i = 0 ; i < dataSnapshot1.child("procedure").getChildrenCount(); i++){
