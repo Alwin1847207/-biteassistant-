@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -30,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().hide();
+
+        Intent intent=getIntent();
+        final String item1=intent.getStringExtra("Item1");
+        final String item2=intent.getStringExtra("Item2");
+        final String item3=intent.getStringExtra("Item3");
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView = (RecyclerView)findViewById(R.id.recycler);
@@ -58,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                        arrayList.add(ing);
                     }
 
-                    if (arrayList.contains("Banana") || arrayList.contains("Ghee") || arrayList.contains("Sugar")) {
+                    if (arrayList.contains(item1) || arrayList.contains(item2) || arrayList.contains(item3)) {
                         for(int k = 0 ; k < dataSnapshot1.child("ingredient").getChildrenCount(); k++) {
                             ingredients = ingredients  + dataSnapshot1.child("ingredient").child(String.valueOf(k)).getValue(String.class)+ ", ";
                         }
