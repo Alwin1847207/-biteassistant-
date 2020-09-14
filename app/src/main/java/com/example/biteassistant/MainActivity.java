@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     String ingredients = "";
                     String steps = "";
 
+
                     ArrayList arrayList = new ArrayList();
 
                     for(int i = 0 ; i < dataSnapshot1.child("ingredient").getChildrenCount(); i++) {
